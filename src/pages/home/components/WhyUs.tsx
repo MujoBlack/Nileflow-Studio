@@ -92,14 +92,14 @@ export default function WhyUs() {
           <Reveal delay={120} className="lg:sticky lg:top-28">
             <div className="photo-tone relative aspect-[4/5] w-full overflow-hidden rounded-card border border-white/[0.08]">
               <img
-                src={studioImages.vocalCorner}
-                alt="The treated vocal corner at Nile Flow House, microphone and guitar ready to record against the soft wall panels"
-                title="Vocal corner, Nile Flow House recording studio Zurich"
+                src={studioImages.whyDetail}
+                alt="Condenser microphone with a pop filter in front of a studio monitor and the slatted wall at Nile Flow House"
+                title="Desk microphone, Nile Flow House recording studio Zurich"
                 className="h-full w-full object-cover object-center"
               />
             </div>
             <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-foreground-500">
-              The vocal corner
+              At the desk
             </p>
           </Reveal>
         </div>

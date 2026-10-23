@@ -13,7 +13,10 @@ export const studioImages = {
   // 04 — hero tour card + "Ready when you are" inner right column
   guitar:
     "https://d8j0ntlcm91z4.cloudfront.net/user_3HAwmNr1wDyIvlf27Ibx2ykuA9i/hf_20261023_162814_1311f115-6f45-47ad-ab8b-995de4bcb964.png",
-  // 05 tidy — "Why here" + "Ready when you are" inner left column
+  // detail of the desk microphone and monitor — "Why here" only
+  whyDetail:
+    "https://d8j0ntlcm91z4.cloudfront.net/user_3HAwmNr1wDyIvlf27Ibx2ykuA9i/hf_20261023_165539_25e78466-5943-491c-ae39-46967c67d4b9.png",
+  // 05 tidy — "Ready when you are" inner left column
   vocalCorner:
     "https://d8j0ntlcm91z4.cloudfront.net/user_3HAwmNr1wDyIvlf27Ibx2ykuA9i/hf_20261023_152705_96c974a5-560c-4ffd-bbba-36dc029002ec.png",
   // 06 (portrait) — production session card
@@ -48,6 +51,7 @@ export const imageByKey: Record<string, string> = {
   studioMain: studioImages.studioMain,
   guitar: studioImages.guitar,
   vocalCorner: studioImages.vocalCorner,
+  whyDetail: studioImages.whyDetail,
   production: studioImages.production,
   producerDesk: studioImages.producerDesk,
   team: studioImages.team,
