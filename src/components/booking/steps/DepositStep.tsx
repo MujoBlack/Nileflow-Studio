@@ -7,6 +7,7 @@ import {
 } from "@/lib/booking";
 import type { BookingDraft } from "@/lib/booking";
 import { prettyDate } from "@/components/booking/BookingSummary";
+import Icon from "@/components/base/Icon";
 
 interface DepositStepProps {
   draft: BookingDraft;
@@ -128,7 +129,7 @@ export default function DepositStep({ draft, processing, total, deposit, onPay }
                     active ? "bg-primary-500 text-background-50" : "bg-background-200 text-primary-500"
                   }`}
                 >
-                  <i className={`${option.icon} text-lg`} aria-hidden="true" />
+                  <Icon name={option.icon} className="text-lg" />
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-[13px] font-medium text-foreground-950">
@@ -154,7 +155,7 @@ export default function DepositStep({ draft, processing, total, deposit, onPay }
 
       <div className="mt-6 rounded-card border border-white/[0.08] bg-background-100 p-4">
         <p className="flex items-start gap-2.5 text-[12px] leading-relaxed text-foreground-600">
-          <i className="ri-lock-2-line mt-0.5 text-sm text-primary-500" aria-hidden="true" />
+          <Icon name="ri-lock-2-line" className="mt-0.5 text-sm text-primary-500" />
           Payments are handled by Stripe with card and TWINT. Nothing is charged in this preview.
         </p>
       </div>
@@ -167,13 +168,13 @@ export default function DepositStep({ draft, processing, total, deposit, onPay }
       >
         {processing ? (
           <>
-            <i className="ri-loader-4-line animate-spin text-base" aria-hidden="true" />
+            <Icon name="ri-loader-4-line" className="animate-spin text-base" />
             Processing…
           </>
         ) : (
           <>
             Pay {formatCHF(deposit)} deposit
-            <i className="ri-arrow-right-up-line text-base" aria-hidden="true" />
+            <Icon name="ri-arrow-right-up-line" className="text-base" />
           </>
         )}
       </button>

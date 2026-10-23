@@ -1,5 +1,6 @@
 import { BOOKING_SESSIONS, formatCHF } from "@/lib/booking";
 import type { BookingDraft } from "@/lib/booking";
+import Icon from "@/components/base/Icon";
 
 interface StepProps {
   draft: BookingDraft;
@@ -38,7 +39,7 @@ export default function SessionStep({ draft, update, errors }: StepProps) {
                     active ? "bg-primary-500 text-background-50" : "bg-background-200 text-primary-500"
                   }`}
                 >
-                  <i className={`${session.icon} text-lg`} aria-hidden="true" />
+                  <Icon name={session.icon} className="text-lg" />
                 </span>
                 <span
                   className={`flex h-5 w-5 items-center justify-center rounded-full border transition-colors ${
@@ -46,7 +47,7 @@ export default function SessionStep({ draft, update, errors }: StepProps) {
                   }`}
                   aria-hidden="true"
                 >
-                  {active && <i className="ri-check-line text-[11px] text-background-50" />}
+                  {active && <Icon name="ri-check-line" className="text-[11px] text-background-50" />}
                 </span>
               </div>
 

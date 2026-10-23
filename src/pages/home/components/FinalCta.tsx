@@ -5,7 +5,7 @@ import Button from "@/components/base/Button";
 import FlowPattern from "@/components/base/FlowPattern";
 import { usePinnedEnabled } from "@/hooks/usePinnedScroll";
 import { useScrollLink } from "@/hooks/useScrollLink";
-import { studioImages } from "@/design/assets";
+import { studioImages, srcSetFor } from "@/design/assets";
 import { siteInfo } from "@/mocks/site";
 
 interface Photo {
@@ -140,6 +140,10 @@ function PhotoColumn({ photos, dim = false }: { photos: Photo[]; dim?: boolean }
         >
           <img
             src={photo.src}
+            srcSet={srcSetFor(photo.src)}
+            sizes="220px"
+            loading="lazy"
+            decoding="async"
             alt={photo.alt}
             title="Inside Nile Flow House studio, Zurich"
             className="h-full w-full object-cover object-center"
@@ -288,6 +292,10 @@ export default function FinalCta() {
               >
                 <img
                   src={photo.src}
+                  srcSet={srcSetFor(photo.src)}
+                  sizes="220px"
+                  loading="lazy"
+                  decoding="async"
                   alt={photo.alt}
                   title="Inside Nile Flow House studio, Zurich"
                   className="h-full w-full object-cover object-center"

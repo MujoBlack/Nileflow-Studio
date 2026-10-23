@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useActiveSection from "@/hooks/useActiveSection";
 import { scrollToSection } from "@/lib/scroll";
 import { siteInfo, siteNav } from "@/mocks/site";
+import Icon from "@/components/base/Icon";
 
 const SECTION_IDS = siteNav.map((item) => item.hash);
 
@@ -62,7 +63,7 @@ export default function Navbar() {
           aria-label={`${siteInfo.name} home`}
         >
           <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-background-100">
-            <i className="ri-water-flash-line text-base text-primary-500" aria-hidden="true" />
+            <Icon name="ri-water-flash-line" className="text-base text-primary-500" />
           </span>
           <span className="font-heading text-[15px] font-semibold tracking-tight text-foreground-950">
             {siteInfo.name}
@@ -97,7 +98,7 @@ export default function Navbar() {
             className="inline-flex items-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-5 py-2.5 font-display text-[12px] uppercase tracking-[0.12em] text-background-50 transition-colors duration-200 hover:bg-primary-400"
           >
             Book a session
-            <i className="ri-arrow-right-up-line text-sm" aria-hidden="true" />
+            <Icon name="ri-arrow-right-up-line" className="text-sm" />
           </Link>
         </div>
 
@@ -108,7 +109,7 @@ export default function Navbar() {
           aria-expanded={open}
           className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-md text-foreground-950 lg:hidden"
         >
-          <i className={open ? "ri-close-line text-xl" : "ri-menu-line text-xl"} aria-hidden="true" />
+          <Icon name={open ? "ri-close-line" : "ri-menu-line"} className="text-xl" />
         </button>
       </div>
 
@@ -151,7 +152,7 @@ export default function Navbar() {
               className="flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-6 py-4 font-display text-[13px] uppercase tracking-[0.12em] text-background-50 transition-colors duration-200 hover:bg-primary-400"
             >
               Book a session
-              <i className="ri-arrow-right-up-line text-base" aria-hidden="true" />
+              <Icon name="ri-arrow-right-up-line" className="text-base" />
             </Link>
             <p className="mt-3 text-center text-[11px] uppercase tracking-[0.14em] text-foreground-600">
               {siteInfo.phone} · {siteInfo.email}

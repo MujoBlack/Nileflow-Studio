@@ -6,6 +6,7 @@ import StarLattice from "@/components/base/StarLattice";
 import { reviews } from "@/mocks/reviews";
 import type { Review } from "@/mocks/reviews";
 import { siteInfo } from "@/mocks/site";
+import Icon from "@/components/base/Icon";
 
 /** how long a review stays up before the next one comes in */
 const DURATION = 7000;
@@ -108,13 +109,11 @@ function ReviewBoard({
                       {review.role}
                     </span>
                   </span>
-                  <i
-                    className={`shrink-0 text-base transition-colors duration-300 ${
-                      isActive
-                        ? "ri-arrow-right-up-line text-primary-500"
-                        : "ri-arrow-right-line text-foreground-500"
+                  <Icon
+                    name={isActive ? "ri-arrow-right-up-line" : "ri-arrow-right-line"}
+                    className={`text-base transition-colors duration-300 ${
+                      isActive ? "text-primary-500" : "text-foreground-500"
                     }`}
-                    aria-hidden="true"
                   />
                 </span>
                 <ProgressBar
@@ -164,7 +163,7 @@ function ReviewBoard({
           }}
           aria-hidden="true"
         />
-        <i className="ri-double-quotes-l text-2xl text-primary-500" aria-hidden="true" />
+        <Icon name="ri-double-quotes-l" className="text-2xl text-primary-500" />
 
         {/* all quotes share one grid cell, so the card is as tall as the longest */}
         <div className="relative z-10 mt-5 grid flex-1">
@@ -203,7 +202,7 @@ function ReviewBoard({
             aria-label="Previous review"
             className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/10 text-foreground-700 transition-colors duration-200 hover:border-primary-500/50 hover:text-primary-500"
           >
-            <i className="ri-arrow-left-line text-base" aria-hidden="true" />
+            <Icon name="ri-arrow-left-line" className="text-base" />
           </button>
           <span className="font-display text-[12px] uppercase tracking-[0.18em] text-foreground-600">
             {activeIndex + 1} / {items.length}
@@ -214,7 +213,7 @@ function ReviewBoard({
             aria-label="Next review"
             className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/10 text-foreground-700 transition-colors duration-200 hover:border-primary-500/50 hover:text-primary-500"
           >
-            <i className="ri-arrow-right-line text-base" aria-hidden="true" />
+            <Icon name="ri-arrow-right-line" className="text-base" />
           </button>
         </div>
       </figure>
@@ -230,7 +229,7 @@ function ReviewBoard({
 
         <div className="mt-3 flex items-center gap-1" aria-hidden="true">
           {Array.from({ length: 5 }).map((_, i) => (
-            <i key={i} className="ri-star-fill text-[15px] text-primary-500" />
+            <Icon key={i} name="ri-star-fill" className="text-[15px] text-primary-500" />
           ))}
         </div>
 
@@ -248,7 +247,7 @@ function ReviewBoard({
           className="mt-6 inline-flex w-fit items-center gap-1.5 whitespace-nowrap border-b border-primary-500/40 pb-1 text-[11px] font-medium uppercase tracking-[0.16em] text-primary-500 transition-colors duration-200 hover:border-primary-500"
         >
           Read on Google
-          <i className="ri-arrow-right-up-line text-sm" aria-hidden="true" />
+          <Icon name="ri-arrow-right-up-line" className="text-sm" />
         </a>
       </div>
     </div>

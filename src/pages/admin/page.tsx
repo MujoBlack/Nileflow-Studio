@@ -6,6 +6,7 @@ import BookingsPanel from "@/pages/admin/components/BookingsPanel";
 import SettingsPanel from "@/pages/admin/components/SettingsPanel";
 import { listBookings, seedDemoBooking } from "@/lib/booking";
 import type { StoredBooking } from "@/lib/booking";
+import Icon from "@/components/base/Icon";
 
 const TABS = [
   { id: "overview", label: "Overview", icon: "ri-dashboard-line" },
@@ -66,7 +67,7 @@ export default function Admin() {
         <div className="w-full max-w-[400px]">
           <div className="flex items-center gap-2.5">
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-background-100">
-              <i className="ri-water-flash-line text-base text-primary-500" aria-hidden="true" />
+              <Icon name="ri-water-flash-line" className="text-base text-primary-500" />
             </span>
             <span className="font-heading text-[15px] font-semibold text-foreground-950">
               Nile Flow House
@@ -142,7 +143,7 @@ export default function Admin() {
             href="/"
             className="mt-6 inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.14em] text-foreground-600 transition-colors hover:text-primary-500"
           >
-            <i className="ri-arrow-left-line text-sm" aria-hidden="true" />
+            <Icon name="ri-arrow-left-line" className="text-sm" />
             Back to the site
           </a>
         </div>
@@ -157,7 +158,7 @@ export default function Admin() {
         <aside className="shrink-0 border-b border-white/[0.08] lg:min-h-screen lg:w-[248px] lg:border-b-0 lg:border-r">
           <div className="flex items-center gap-2.5 px-5 py-5">
             <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-background-100">
-              <i className="ri-water-flash-line text-sm text-primary-500" aria-hidden="true" />
+              <Icon name="ri-water-flash-line" className="text-sm text-primary-500" />
             </span>
             <span className="font-heading text-[14px] font-semibold text-foreground-950">
               Studio admin
@@ -182,7 +183,7 @@ export default function Admin() {
                       : "text-foreground-700 hover:bg-background-100 hover:text-foreground-950"
                   }`}
                 >
-                  <i className={`${item.icon} text-base`} aria-hidden="true" />
+                  <Icon name={item.icon} className="text-base" />
                   {item.label}
                 </button>
               );
@@ -246,7 +247,7 @@ export default function Admin() {
               onClick={refresh}
               className="inline-flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-pill border border-white/[0.12] px-4 py-2 text-[11px] uppercase tracking-[0.12em] text-foreground-700 transition-colors hover:bg-background-100"
             >
-              <i className="ri-refresh-line text-sm" aria-hidden="true" />
+              <Icon name="ri-refresh-line" className="text-sm" />
               Refresh
             </button>
           </div>

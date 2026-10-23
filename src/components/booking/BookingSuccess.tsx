@@ -3,6 +3,7 @@ import { formatCHF, formatRange, fromISODate } from "@/lib/booking";
 import type { StoredBooking } from "@/lib/booking";
 import { prettyDate } from "@/components/booking/BookingSummary";
 import { siteInfo } from "@/mocks/site";
+import Icon from "@/components/base/Icon";
 
 interface BookingSuccessProps {
   booking: StoredBooking;
@@ -87,7 +88,7 @@ export default function BookingSuccess({ booking, onDone, onRestart }: BookingSu
     <div className="mx-auto max-w-[720px]">
       <div className="flex flex-col items-center text-center">
         <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary-500 text-background-50">
-          <i className="ri-check-line text-3xl" aria-hidden="true" />
+          <Icon name="ri-check-line" className="text-3xl" />
         </span>
         <h2 className="headline mt-6 text-[clamp(2rem,5vw,3.4rem)] text-foreground-950">
           You&apos;re <em>booked.</em>
@@ -144,7 +145,7 @@ export default function BookingSuccess({ booking, onDone, onRestart }: BookingSu
           rel="noopener noreferrer"
           className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill border border-white/[0.15] px-4 py-3 font-display text-[11px] uppercase tracking-[0.12em] text-foreground-950 transition-colors duration-200 hover:bg-background-100"
         >
-          <i className="ri-calendar-line text-sm" aria-hidden="true" />
+          <Icon name="ri-calendar-line" className="text-sm" />
           Google
         </a>
         <button
@@ -152,7 +153,7 @@ export default function BookingSuccess({ booking, onDone, onRestart }: BookingSu
           onClick={downloadIcs}
           className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill border border-white/[0.15] px-4 py-3 font-display text-[11px] uppercase tracking-[0.12em] text-foreground-950 transition-colors duration-200 hover:bg-background-100"
         >
-          <i className="ri-download-2-line text-sm" aria-hidden="true" />
+          <Icon name="ri-download-2-line" className="text-sm" />
           .ics file
         </button>
         <a
@@ -161,7 +162,7 @@ export default function BookingSuccess({ booking, onDone, onRestart }: BookingSu
           rel="noopener noreferrer"
           className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill border border-white/[0.15] px-4 py-3 font-display text-[11px] uppercase tracking-[0.12em] text-foreground-950 transition-colors duration-200 hover:bg-background-100"
         >
-          <i className="ri-whatsapp-line text-sm" aria-hidden="true" />
+          <Icon name="ri-whatsapp-line" className="text-sm" />
           WhatsApp
         </a>
       </div>
@@ -173,7 +174,7 @@ export default function BookingSuccess({ booking, onDone, onRestart }: BookingSu
         <ul className="mt-3 space-y-2">
           {BRING.map((item) => (
             <li key={item} className="flex items-start gap-2.5 text-[13px] text-foreground-700">
-              <i className="ri-check-line mt-0.5 text-[13px] text-primary-500" aria-hidden="true" />
+              <Icon name="ri-check-line" className="mt-0.5 text-[13px] text-primary-500" />
               {item}
             </li>
           ))}
@@ -181,7 +182,7 @@ export default function BookingSuccess({ booking, onDone, onRestart }: BookingSu
       </div>
 
       <p className="mt-5 flex items-start gap-2.5 rounded-card border border-primary-500/20 bg-primary-500/[0.06] p-4 text-[12.5px] leading-relaxed text-foreground-700">
-        <i className="ri-mail-check-line mt-0.5 text-base text-primary-500" aria-hidden="true" />
+        <Icon name="ri-mail-check-line" className="mt-0.5 text-base text-primary-500" />
         We&apos;ve emailed your confirmation. Use the link in it to move or cancel your booking.
       </p>
 
@@ -191,7 +192,7 @@ export default function BookingSuccess({ booking, onDone, onRestart }: BookingSu
           className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-6 py-3 font-display text-[12px] uppercase tracking-[0.12em] text-background-50 transition-colors duration-200 hover:bg-primary-400"
         >
           Manage this booking
-          <i className="ri-arrow-right-up-line text-sm" aria-hidden="true" />
+          <Icon name="ri-arrow-right-up-line" className="text-sm" />
         </Link>
         <button
           type="button"

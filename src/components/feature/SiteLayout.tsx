@@ -16,7 +16,6 @@ export default function SiteLayout({ children, hideMobileBook = false }: SiteLay
       <main className="w-full flex-1">{children}</main>
       <Footer />
       {!hideMobileBook && <MobileBookBar />}
-      {!hideMobileBook && <div className="h-[76px] lg:hidden" aria-hidden="true" />}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BOOKING_EXTRAS, BOOKING_SESSIONS, formatCHF } from "@/lib/booking";
 import { openingHours } from "@/mocks/site";
+import Icon from "@/components/base/Icon";
 
 interface SettingsPanelProps {
   section: "quotes" | "prices" | "settings";
@@ -44,7 +45,7 @@ export default function SettingsPanel({ section }: SettingsPanelProps) {
           </p>
         </div>
         <p className="mt-4 flex items-start gap-2 text-[11.5px] leading-relaxed text-foreground-500">
-          <i className="ri-information-line mt-0.5 text-sm" aria-hidden="true" />
+          <Icon name="ri-information-line" className="mt-0.5 text-sm" />
           Requests are not mirrored here — a dashboard list would need Readdy Backend or SaaS
           Supabase connected.
         </p>

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Reveal from "@/components/base/Reveal";
 import SectionHeading from "@/components/base/SectionHeading";
 import StarLattice from "@/components/base/StarLattice";
-import { studioImages } from "@/design/assets";
+import { studioImages, srcSetFor } from "@/design/assets";
 import { whyUs } from "@/mocks/whyUs";
 
 export default function WhyUs() {
@@ -93,6 +93,10 @@ export default function WhyUs() {
             <div className="photo-tone relative aspect-[4/5] w-full overflow-hidden rounded-card border border-white/[0.08]">
               <img
                 src={studioImages.whyDetail}
+                srcSet={srcSetFor(studioImages.whyDetail)}
+                sizes="(min-width: 1024px) 560px, 100vw"
+                loading="lazy"
+                decoding="async"
                 alt="Condenser microphone with a pop filter in front of a studio monitor and the slatted wall at Nile Flow House"
                 title="Desk microphone, Nile Flow House recording studio Zurich"
                 className="h-full w-full object-cover object-center"

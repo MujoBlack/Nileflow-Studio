@@ -15,6 +15,7 @@ import {
   priceBreakdown,
 } from "@/lib/booking";
 import type { BookingDraft, StoredBooking } from "@/lib/booking";
+import Icon from "@/components/base/Icon";
 
 const STEPS = ["Session", "Date & time", "Extras", "Details", "Deposit"];
 
@@ -219,7 +220,7 @@ export default function BookingPanel({ open, initialSessionId, onClose }: Bookin
                 aria-label="Close the booking panel"
                 className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/10 text-foreground-700 transition-colors duration-200 hover:bg-background-100 hover:text-foreground-950"
               >
-                <i className="ri-close-line text-xl" aria-hidden="true" />
+                <Icon name="ri-close-line" className="text-xl" />
               </button>
             </div>
 
@@ -268,7 +269,7 @@ export default function BookingPanel({ open, initialSessionId, onClose }: Bookin
                       onClick={goBack}
                       className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill border border-white/15 px-5 py-3 font-display text-[12px] uppercase tracking-[0.12em] text-foreground-950 transition-colors duration-200 hover:bg-background-100"
                     >
-                      <i className="ri-arrow-left-line text-sm" aria-hidden="true" />
+                      <Icon name="ri-arrow-left-line" className="text-sm" />
                       Back
                     </button>
 
@@ -279,7 +280,7 @@ export default function BookingPanel({ open, initialSessionId, onClose }: Bookin
                         className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-6 py-3 font-display text-[12px] uppercase tracking-[0.12em] text-background-50 transition-colors duration-200 hover:bg-primary-400"
                       >
                         Continue
-                        <i className="ri-arrow-right-line text-sm" aria-hidden="true" />
+                        <Icon name="ri-arrow-right-line" className="text-sm" />
                       </button>
                     ) : (
                       <span />
@@ -295,7 +296,7 @@ export default function BookingPanel({ open, initialSessionId, onClose }: Bookin
                       className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-6 py-3 font-display text-[12px] uppercase tracking-[0.12em] text-background-50 transition-colors duration-200 hover:bg-primary-400"
                     >
                       Continue
-                      <i className="ri-arrow-right-line text-sm" aria-hidden="true" />
+                      <Icon name="ri-arrow-right-line" className="text-sm" />
                     </button>
                   </div>
                 )}
@@ -334,9 +335,9 @@ export default function BookingPanel({ open, initialSessionId, onClose }: Bookin
                   {price.total > 0 ? `CHF ${price.total}` : "CHF —"}
                 </span>
               </span>
-              <i
-                className={`text-lg text-foreground-600 ${summaryOpen ? "ri-arrow-down-s-line" : "ri-arrow-up-s-line"}`}
-                aria-hidden="true"
+              <Icon
+                name={summaryOpen ? "ri-arrow-down-s-line" : "ri-arrow-up-s-line"}
+                className="text-lg text-foreground-600"
               />
             </button>
             {step < 5 ? (

@@ -2,9 +2,11 @@ import { useRef, useState } from "react";
 import Reveal from "@/components/base/Reveal";
 import SectionHeading from "@/components/base/SectionHeading";
 import SilkSheen from "@/components/base/SilkSheen";
+import CoverArt from "@/components/base/CoverArt";
 import ReleasePlayer from "@/pages/home/components/ReleasePlayer";
 import { releases } from "@/mocks/work";
 import type { Release } from "@/mocks/work";
+import Icon from "@/components/base/Icon";
 
 export default function RecentWork() {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -53,19 +55,18 @@ export default function RecentWork() {
                       isActive ? "border-primary-500/60" : "border-white/[0.08]"
                     }`}
                   >
-                    <img
+                    <CoverArt
                       src={release.coverArt}
-                      alt={`${release.title} album artwork`}
-                      title={`${release.title} by ${release.artist}`}
-                      className="h-full w-full object-cover"
+                      title={release.title}
+                      artist={release.artist}
+                      tone={release.coverTone}
+                      showText
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-black/35 backdrop-blur-sm transition-all duration-200 group-hover:scale-105 group-hover:bg-black/50">
-                        <i
-                          className={`text-2xl text-white ${
-                            isActive && livePlaying ? "ri-pause-fill" : "ri-play-fill"
-                          }`}
-                          aria-hidden="true"
+                        <Icon
+                          name={isActive && livePlaying ? "ri-pause-fill" : "ri-play-fill"}
+                          className="text-2xl text-white"
                         />
                       </span>
                     </div>
@@ -73,7 +74,7 @@ export default function RecentWork() {
                       {release.year}
                     </span>
                     <span className="absolute right-4 top-4 flex items-center gap-1.5 rounded-pill bg-background-50/70 px-2.5 py-1 text-[11px] font-medium text-foreground-800 backdrop-blur-sm">
-                      <i className="ri-spotify-fill text-xs" aria-hidden="true" />
+                      <Icon name="ri-spotify-fill" className="text-xs" />
                       Spotify
                     </span>
                   </div>

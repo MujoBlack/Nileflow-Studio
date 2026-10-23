@@ -2,8 +2,9 @@ import Reveal from "@/components/base/Reveal";
 import SectionHeading from "@/components/base/SectionHeading";
 import Button from "@/components/base/Button";
 import { scrollToSection } from "@/lib/scroll";
-import { imageByKey } from "@/design/assets";
+import { imageByKey, srcSetFor } from "@/design/assets";
 import { team } from "@/mocks/team";
+import Icon from "@/components/base/Icon";
 
 export default function TeamSection() {
   const core = team.filter((m) => m.group === "core");
@@ -30,13 +31,17 @@ export default function TeamSection() {
                     {image ? (
                       <img
                         src={image}
+                        srcSet={srcSetFor(image)}
+                        sizes="(min-width: 1024px) 420px, 100vw"
+                        loading="lazy"
+                        decoding="async"
                         alt={`${member.name}, ${member.role} at Nile Flow House`}
                         className="h-full w-full object-cover object-top"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center bg-background-200">
                         <span className="flex h-14 w-14 items-center justify-center rounded-md bg-background-100">
-                          <i className={`${member.icon} text-2xl text-foreground-500`} aria-hidden="true" />
+                          <Icon name={member.icon} className="text-2xl text-foreground-500" />
                         </span>
                       </div>
                     )}

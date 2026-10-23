@@ -13,6 +13,7 @@ import FaqSection from "@/pages/home/components/FaqSection";
 import FinalCta from "@/pages/home/components/FinalCta";
 import BookingPanel from "@/components/booking/BookingPanel";
 import QuotePanel from "@/components/quote/QuotePanel";
+import PhotoTour from "@/components/feature/PhotoTour";
 
 export default function Home() {
   const location = useLocation();
@@ -50,6 +51,7 @@ export default function Home() {
         initialService={params.get("service")}
         onClose={closePanel}
       />
+      <PhotoTour />
     </>
   );
 }

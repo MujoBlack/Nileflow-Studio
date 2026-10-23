@@ -3,6 +3,7 @@ import Reveal from "@/components/base/Reveal";
 import SectionHeading from "@/components/base/SectionHeading";
 import FlowPattern from "@/components/base/FlowPattern";
 import { services } from "@/mocks/services";
+import Icon from "@/components/base/Icon";
 
 export default function ServicesSection() {
   return (
@@ -40,7 +41,7 @@ export default function ServicesSection() {
                           : "bg-secondary-100 text-primary-500"
                       }`}
                     >
-                      <i className={`${service.icon} text-lg`} aria-hidden="true" />
+                      <Icon name={service.icon} className="text-lg" />
                     </span>
                     {featured && (
                       <span className="rounded-pill bg-background-50/12 px-2.5 py-1 text-[9px] font-medium uppercase tracking-[0.16em]">
@@ -61,11 +62,11 @@ export default function ServicesSection() {
                   <ul className="mt-5 flex-1 space-y-2.5">
                     {service.included.map((line) => (
                       <li key={line} className="flex items-start gap-2.5">
-                        <i
-                          className={`ri-check-line mt-0.5 text-[13px] ${
+                        <Icon
+                          name="ri-check-line"
+                          className={`mt-0.5 text-[13px] ${
                             featured ? "text-background-50" : "text-primary-500"
                           }`}
-                          aria-hidden="true"
                         />
                         <span
                           className={`text-[12.5px] leading-snug ${
@@ -91,7 +92,7 @@ export default function ServicesSection() {
                     }`}
                   >
                     Get a quote
-                    <i className="ri-arrow-right-up-line text-sm" aria-hidden="true" />
+                    <Icon name="ri-arrow-right-up-line" className="text-sm" />
                   </Link>
                 </div>
               </Reveal>

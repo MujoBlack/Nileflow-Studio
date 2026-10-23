@@ -3,6 +3,8 @@ import type { MutableRefObject } from "react";
 import useSpotifyPreview from "@/hooks/useSpotifyPreview";
 import type { Release } from "@/mocks/work";
 import SeekBar from "@/pages/home/components/SeekBar";
+import Icon from "@/components/base/Icon";
+import CoverArt from "@/components/base/CoverArt";
 
 interface ReleasePlayerProps {
   release: Release;
@@ -94,16 +96,12 @@ export default function ReleasePlayer({ release, onPlayingChange, toggleRef }: R
         <div className="relative mt-8 overflow-hidden rounded-card border border-white/[0.08] bg-background-100">
           <div className="flex flex-col gap-5 p-4 sm:flex-row sm:items-center sm:gap-6 sm:p-5">
             <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md bg-background-200 shadow-[0_18px_40px_-20px_rgba(0,0,0,0.9)] sm:h-28 sm:w-28">
-              {release.coverArt ? (
-                <img
-                  src={release.coverArt}
-                  alt={`${release.title} album artwork`}
-                  title={`${release.title} by ${release.artist}`}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <div className={`photo-tone h-full w-full bg-gradient-to-br ${release.coverTone}`} />
-              )}
+              <CoverArt
+                src={release.coverArt}
+                title={release.title}
+                artist={release.artist}
+                tone={release.coverTone}
+              />
             </div>
 
             <div className="min-w-0 flex-1">
@@ -126,10 +124,7 @@ export default function ReleasePlayer({ release, onPlayingChange, toggleRef }: R
                   aria-label={playing ? `Pause ${release.title}` : `Play ${release.title}`}
                   className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-primary-500 text-background-50 transition-colors duration-200 hover:bg-primary-400 disabled:opacity-50"
                 >
-                  <i
-                    className={`text-xl ${playing ? "ri-pause-fill" : "ri-play-fill"}`}
-                    aria-hidden="true"
-                  />
+                  <Icon name={playing ? "ri-pause-fill" : "ri-play-fill"} className="text-xl" />
                 </button>
 
                 <SeekBar
@@ -147,7 +142,7 @@ export default function ReleasePlayer({ release, onPlayingChange, toggleRef }: R
                   aria-label={`Open ${release.title} on Spotify`}
                   className="hidden h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/10 text-foreground-700 transition-colors duration-200 hover:text-primary-500 sm:flex"
                 >
-                  <i className="ri-spotify-line text-lg" aria-hidden="true" />
+                  <Icon name="ri-spotify-line" className="text-lg" />
                 </a>
               </div>
 
@@ -175,7 +170,7 @@ export default function ReleasePlayer({ release, onPlayingChange, toggleRef }: R
               rel="noopener noreferrer"
               className="inline-flex cursor-pointer items-center gap-1.5 text-xs font-medium text-foreground-600 transition-colors duration-200 hover:text-primary-500"
             >
-              <i className="ri-external-link-line text-sm" aria-hidden="true" />
+              <Icon name="ri-external-link-line" className="text-sm" />
               Listen on Spotify
             </a>
           </div>
@@ -186,16 +181,12 @@ export default function ReleasePlayer({ release, onPlayingChange, toggleRef }: R
         <div className="fixed inset-x-0 bottom-[84px] z-40 px-3 sm:px-5 lg:bottom-6">
           <div className="mx-auto flex w-full max-w-2xl items-center gap-3 rounded-pill border border-white/[0.12] bg-background-100/95 p-2 shadow-[0_26px_60px_-26px_rgba(0,0,0,0.95)] backdrop-blur-xl sm:gap-4 sm:pr-4">
             <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-background-200">
-              {release.coverArt ? (
-                <img
-                  src={release.coverArt}
-                  alt={`${release.title} album artwork`}
-                  title={`${release.title} by ${release.artist}`}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <div className={`h-full w-full bg-gradient-to-br ${release.coverTone}`} />
-              )}
+              <CoverArt
+                src={release.coverArt}
+                title={release.title}
+                artist={release.artist}
+                tone={release.coverTone}
+              />
             </div>
 
             <button
@@ -205,10 +196,7 @@ export default function ReleasePlayer({ release, onPlayingChange, toggleRef }: R
               aria-label={playing ? `Pause ${release.title}` : `Play ${release.title}`}
               className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-primary-500 text-background-50 transition-colors duration-200 hover:bg-primary-400 disabled:opacity-50"
             >
-              <i
-                className={`${playing ? "ri-pause-fill" : "ri-play-fill"} text-lg`}
-                aria-hidden="true"
-              />
+              <Icon name={playing ? "ri-pause-fill" : "ri-play-fill"} className="text-lg" />
             </button>
 
             <div className="hidden min-w-0 shrink-0 sm:block">
@@ -240,7 +228,7 @@ export default function ReleasePlayer({ release, onPlayingChange, toggleRef }: R
               aria-label={`Open ${release.title} on Spotify`}
               className="hidden h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-foreground-600 transition-colors duration-200 hover:text-primary-500 sm:flex"
             >
-              <i className="ri-spotify-line text-base" aria-hidden="true" />
+              <Icon name="ri-spotify-line" className="text-base" />
             </a>
 
             <button
@@ -250,7 +238,7 @@ export default function ReleasePlayer({ release, onPlayingChange, toggleRef }: R
               title="Close the mini player"
               className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-foreground-600 transition-colors duration-200 hover:bg-background-200 hover:text-foreground-950"
             >
-              <i className="ri-close-line text-lg" aria-hidden="true" />
+              <Icon name="ri-close-line" className="text-lg" />
             </button>
           </div>
         </div>

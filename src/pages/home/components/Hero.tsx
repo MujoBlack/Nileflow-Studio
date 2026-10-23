@@ -1,14 +1,15 @@
 import Button from "@/components/base/Button";
 import Reveal from "@/components/base/Reveal";
 import HeroTourCard from "@/pages/home/components/HeroTourCard";
-import { studioImages } from "@/design/assets";
+import { studioImages, srcSetFor } from "@/design/assets";
 import { siteInfo } from "@/mocks/site";
+import Icon from "@/components/base/Icon";
 
 const counters = [
-  { value: "3", label: "Releases in 2026" },
+  { value: "CHF 40", label: "Per hour, from" },
   { value: "5.0", label: "Google rating" },
-  { value: "1", label: "Room, all yours" },
   { value: "48h", label: "Free cancellation" },
+  { value: "30%", label: "Deposit to book" },
 ];
 
 export default function Hero() {
@@ -17,15 +18,21 @@ export default function Hero() {
       <div className="absolute inset-0">
         <img
           src={studioImages.hero}
+          srcSet={srcSetFor(studioImages.hero)}
+          sizes="100vw"
+          fetchPriority="high"
+          decoding="async"
           alt="Producer working at the desk in the Nile Flow House attic studio"
           className="h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-background-50/50" />
         <div className="absolute inset-0 bg-gradient-to-t from-background-50 via-background-50/45 to-background-50/60" />
         <div className="absolute inset-0 bg-gradient-to-r from-background-50/88 via-background-50/30 to-transparent" />
+        {/* extra shade behind the headline and copy so the text stays readable on the busy photo */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_18%_52%,rgb(14_14_16/0.72),transparent_70%)]" />
       </div>
 
-      <div className="content-shell relative z-10 flex min-h-[680px] w-full flex-col justify-end pb-8 pt-28 md:min-h-[min(100vh,820px)] md:pb-10 md:pt-32">
+      <div className="content-shell relative z-10 flex min-h-[620px] w-full flex-col justify-end pb-8 pt-28 md:min-h-[min(100vh,820px)] md:pb-10 md:pt-32">
         <div className="flex flex-1 flex-col justify-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
           <div className="w-full lg:max-w-[600px]">
             <Reveal>
@@ -39,7 +46,7 @@ export default function Hero() {
               </h1>
             </Reveal>
             <Reveal delay={160}>
-              <p className="mt-6 max-w-[34rem] text-base leading-relaxed text-foreground-700 md:text-[17px]">
+              <p className="mt-6 max-w-[34rem] text-base leading-relaxed text-foreground-800 md:text-[17px]">
                 A small attic studio for vocals, beats, podcasts and voiceover. You book the room
                 by the hour, and an engineer works with you the whole time.
               </p>
@@ -64,8 +71,8 @@ export default function Hero() {
               </div>
             </Reveal>
             <Reveal delay={320}>
-              <p className="mt-6 flex items-center gap-2 text-xs text-foreground-600">
-                <i className="ri-time-line text-sm" aria-hidden="true" />
+              <p className="mt-6 flex items-center gap-2 text-xs text-foreground-700">
+                <Icon name="ri-time-line" className="text-sm" />
                 Book online · 30% deposit · free cancellation up to 48 hours before
               </p>
             </Reveal>

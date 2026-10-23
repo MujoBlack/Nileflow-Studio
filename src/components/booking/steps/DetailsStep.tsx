@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { BookingDraft } from "@/lib/booking";
+import Icon from "@/components/base/Icon";
 
 interface StepProps {
   draft: BookingDraft;
@@ -165,10 +166,7 @@ export default function DetailsStep({ draft, update, errors }: StepProps) {
               className="h-5 w-5 cursor-pointer appearance-none rounded-[5px] border border-white/20 bg-transparent checked:border-primary-500 checked:bg-primary-500"
             />
             {draft.terms && (
-              <i
-                className="ri-check-line pointer-events-none absolute text-[13px] text-background-50"
-                aria-hidden="true"
-              />
+              <Icon name="ri-check-line" className="pointer-events-none absolute text-[13px] text-background-50" />
             )}
           </span>
           <span className="text-[13px] leading-relaxed text-foreground-700">

@@ -14,6 +14,7 @@ import {
 } from "@/lib/booking";
 import type { BookingDraft, StoredBooking } from "@/lib/booking";
 import { siteInfo } from "@/mocks/site";
+import Icon from "@/components/base/Icon";
 
 function toDraft(booking: StoredBooking): BookingDraft {
   return {
@@ -84,14 +85,14 @@ export default function ManageBooking() {
             to="/"
             className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.14em] text-foreground-600 transition-colors hover:text-primary-500"
           >
-            <i className="ri-arrow-left-line text-sm" aria-hidden="true" />
+            <Icon name="ri-arrow-left-line" className="text-sm" />
             Back to the site
           </Link>
 
           {notFound || wrongKey ? (
             <div className="mx-auto mt-10 max-w-[560px] rounded-card border border-white/[0.08] bg-background-100 p-8 text-center">
               <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-background-200 text-foreground-600">
-                <i className="ri-link-unlink text-2xl" aria-hidden="true" />
+                <Icon name="ri-link-unlink" className="text-2xl" />
               </span>
               <h1 className="headline mt-5 text-[clamp(1.6rem,3.4vw,2.2rem)] text-foreground-950">
                 We can&apos;t find <em>that booking.</em>
@@ -173,10 +174,7 @@ export default function ManageBooking() {
 
                 {mode === "moved" && (
                   <div className="mt-5 flex items-start gap-3 rounded-card border border-primary-500/30 bg-primary-500/[0.07] p-4">
-                    <i
-                      className="ri-calendar-check-line mt-0.5 text-lg text-primary-500"
-                      aria-hidden="true"
-                    />
+                    <Icon name="ri-calendar-check-line" className="mt-0.5 text-lg text-primary-500" />
                     <p className="text-[13px] leading-relaxed text-foreground-800">
                       Moved to {prettyDate(booking.date)}, {formatRange(booking.startHour, booking.hours)}.
                       You&apos;ll get an updated confirmation by email.
@@ -186,7 +184,7 @@ export default function ManageBooking() {
 
                 {mode === "cancelled" && (
                   <div className="mt-5 flex items-start gap-3 rounded-card border border-primary-500/30 bg-primary-500/[0.07] p-4">
-                    <i className="ri-refund-2-line mt-0.5 text-lg text-primary-500" aria-hidden="true" />
+                    <Icon name="ri-refund-2-line" className="mt-0.5 text-lg text-primary-500" />
                     <p className="text-[13px] leading-relaxed text-foreground-800">
                       Cancelled. Your deposit of {formatCHF(booking.deposit)} is refunded within five
                       working days.
@@ -228,7 +226,7 @@ export default function ManageBooking() {
                         className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-5 py-2.5 font-display text-[11px] uppercase tracking-[0.12em] text-background-50 transition-colors hover:bg-primary-400 disabled:opacity-50"
                       >
                         Confirm new time
-                        <i className="ri-arrow-right-up-line text-sm" aria-hidden="true" />
+                        <Icon name="ri-arrow-right-up-line" className="text-sm" />
                       </button>
                     </div>
                   </div>
@@ -275,7 +273,7 @@ export default function ManageBooking() {
                           className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-6 py-3 font-display text-[12px] uppercase tracking-[0.12em] text-background-50 transition-colors hover:bg-primary-400"
                         >
                           Move booking
-                          <i className="ri-calendar-line text-sm" aria-hidden="true" />
+                          <Icon name="ri-calendar-line" className="text-sm" />
                         </button>
                         <button
                           type="button"
@@ -296,7 +294,7 @@ export default function ManageBooking() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1 text-primary-500 underline underline-offset-2"
                           >
-                            <i className="ri-whatsapp-line text-sm" aria-hidden="true" />
+                            <Icon name="ri-whatsapp-line" className="text-sm" />
                             WhatsApp
                           </a>{" "}
                           and we&apos;ll sort it out.

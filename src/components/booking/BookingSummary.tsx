@@ -7,6 +7,7 @@ import {
   priceBreakdown,
 } from "@/lib/booking";
 import type { BookingDraft } from "@/lib/booking";
+import Icon from "@/components/base/Icon";
 
 const MONTHS_SHORT = [
   "Jan",
@@ -118,7 +119,7 @@ export default function BookingSummary({
       </dl>
 
       <p className="mt-4 flex items-start gap-2 text-[11px] leading-relaxed text-foreground-500">
-        <i className="ri-shield-check-line mt-0.5 text-sm text-primary-500" aria-hidden="true" />
+        <Icon name="ri-shield-check-line" className="mt-0.5 text-sm text-primary-500" />
         Free cancellation up to 48 hours before the start time.
       </p>
     </div>

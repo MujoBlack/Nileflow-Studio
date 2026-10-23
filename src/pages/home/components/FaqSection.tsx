@@ -3,6 +3,7 @@ import Reveal from "@/components/base/Reveal";
 import SectionHeading from "@/components/base/SectionHeading";
 import { faq } from "@/mocks/faq";
 import { siteInfo } from "@/mocks/site";
+import Icon from "@/components/base/Icon";
 
 export default function FaqSection() {
   const [openId, setOpenId] = useState<string | null>(faq[0]?.id ?? null);
@@ -39,11 +40,11 @@ export default function FaqSection() {
                     >
                       {item.question}
                     </span>
-                    <i
-                      className={`shrink-0 text-lg text-foreground-600 transition-transform duration-300 ${
-                        isOpen ? "ri-subtract-line rotate-180" : "ri-add-line"
+                    <Icon
+                      name={isOpen ? "ri-subtract-line" : "ri-add-line"}
+                      className={`text-lg text-foreground-600 transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
                       }`}
-                      aria-hidden="true"
                     />
                   </button>
                   <div

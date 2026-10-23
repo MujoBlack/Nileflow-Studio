@@ -3,6 +3,7 @@ import type { FormEvent } from "react";
 import usePanelBehavior from "@/hooks/usePanelBehavior";
 import { services } from "@/mocks/services";
 import { siteInfo } from "@/mocks/site";
+import Icon from "@/components/base/Icon";
 
 const SUBMIT_ADDR = "https://readdy.ai/api/form/dbdmdtr0h265e6qa8s4g";
 
@@ -130,7 +131,7 @@ export default function QuotePanel({ open, initialService, onClose }: QuotePanel
             aria-label="Close the quote panel"
             className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/10 text-foreground-700 transition-colors duration-200 hover:bg-background-100 hover:text-foreground-950"
           >
-            <i className="ri-close-line text-xl" aria-hidden="true" />
+            <Icon name="ri-close-line" className="text-xl" />
           </button>
         </div>
       </div>
@@ -139,7 +140,7 @@ export default function QuotePanel({ open, initialService, onClose }: QuotePanel
         {status === "sent" ? (
           <div className="mx-auto max-w-[560px] text-center">
             <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary-500 text-background-50">
-              <i className="ri-check-line text-3xl" aria-hidden="true" />
+              <Icon name="ri-check-line" className="text-3xl" />
             </span>
             <h3 className="headline mt-6 text-[clamp(1.9rem,4.6vw,3rem)] text-foreground-950">
               Thanks, we&apos;ll <em>be in touch.</em>
@@ -153,7 +154,7 @@ export default function QuotePanel({ open, initialService, onClose }: QuotePanel
               className="mt-8 inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-6 py-3 font-display text-[12px] uppercase tracking-[0.12em] text-background-50 transition-colors duration-200 hover:bg-primary-400"
             >
               Back to the site
-              <i className="ri-arrow-right-up-line text-sm" aria-hidden="true" />
+              <Icon name="ri-arrow-right-up-line" className="text-sm" />
             </button>
           </div>
         ) : (
@@ -354,7 +355,7 @@ export default function QuotePanel({ open, initialService, onClose }: QuotePanel
                     className="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-6 py-3.5 font-display text-[12px] uppercase tracking-[0.12em] text-background-50 transition-colors duration-200 hover:bg-primary-400 disabled:cursor-wait disabled:opacity-70"
                   >
                     {status === "sending" ? "Sending…" : "Send the request"}
-                    <i className="ri-arrow-right-up-line text-sm" aria-hidden="true" />
+                    <Icon name="ri-arrow-right-up-line" className="text-sm" />
                   </button>
                   <p className="text-[11.5px] leading-relaxed text-foreground-500">
                     We reply within one working day.

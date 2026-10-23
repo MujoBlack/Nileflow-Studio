@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import Icon from "@/components/base/Icon";
 
 type Variant = "primary" | "secondary" | "ghost" | "inverse";
 type Size = "sm" | "md" | "lg";
@@ -71,16 +72,13 @@ export default function Button({
     <>
       {leadingIcon && !iconRight && !arrow && (
         <span className="flex h-4 w-4 items-center justify-center">
-          <i className={`${leadingIcon} text-base`} aria-hidden="true" />
+          <Icon name={leadingIcon} className="text-base" />
         </span>
       )}
       <span>{children}</span>
       {(arrow || (icon && iconRight)) && (
         <span className="flex h-4 w-4 items-center justify-center">
-          <i
-            className={`${arrow ? "ri-arrow-right-up-line" : icon} text-base`}
-            aria-hidden="true"
-          />
+          <Icon name={arrow ? "ri-arrow-right-up-line" : (icon ?? "")} className="text-base" />
         </span>
       )}
     </>

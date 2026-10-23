@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { OPEN_HOURS, formatHour, toISODate, weekdayOf } from "@/lib/booking";
 import type { StoredBooking } from "@/lib/booking";
+import Icon from "@/components/base/Icon";
 
 const DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
@@ -67,7 +68,7 @@ export default function CalendarPanel({ bookings }: CalendarPanelProps) {
             aria-label="Previous week"
             className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-white/[0.12] text-foreground-700 hover:bg-background-100"
           >
-            <i className="ri-arrow-left-s-line text-lg" aria-hidden="true" />
+            <Icon name="ri-arrow-left-s-line" className="text-lg" />
           </button>
           <button
             type="button"
@@ -82,7 +83,7 @@ export default function CalendarPanel({ bookings }: CalendarPanelProps) {
             aria-label="Next week"
             className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-white/[0.12] text-foreground-700 hover:bg-background-100"
           >
-            <i className="ri-arrow-right-s-line text-lg" aria-hidden="true" />
+            <Icon name="ri-arrow-right-s-line" className="text-lg" />
           </button>
         </div>
       </div>
@@ -159,7 +160,7 @@ export default function CalendarPanel({ bookings }: CalendarPanelProps) {
       </div>
 
       <p className="mt-4 flex items-center gap-2 text-[11.5px] text-foreground-600">
-        <i className="ri-information-line text-sm text-primary-500" aria-hidden="true" />
+        <Icon name="ri-information-line" className="text-sm text-primary-500" />
         Click an empty slot to block it. Blocked slots are local to this preview.
       </p>
     </div>

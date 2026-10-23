@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import SilkSheen from "@/components/base/SilkSheen";
 import { scrollToSection } from "@/lib/scroll";
 import { footerPages, legalCopy, openingHours, siteInfo, socialLinks } from "@/mocks/site";
+import Icon from "@/components/base/Icon";
 
 type LegalKey = "privacy" | "terms";
 
@@ -41,7 +42,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2.5">
               <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-background-100">
-                <i className="ri-water-flash-line text-base text-primary-500" aria-hidden="true" />
+                <Icon name="ri-water-flash-line" className="text-base text-primary-500" />
               </span>
               <span className="font-heading text-[15px] font-semibold text-foreground-950">
                 {siteInfo.name}
@@ -60,7 +61,7 @@ export default function Footer() {
                   aria-label={s.label}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-foreground-700 transition-colors duration-200 hover:border-primary-500/50 hover:text-primary-500"
                 >
-                  <i className={`${s.icon} text-lg`} aria-hidden="true" />
+                  <Icon name={s.icon} className="text-lg" />
                 </a>
               ))}
             </div>
@@ -135,7 +136,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-foreground-700 transition-colors duration-200 hover:text-primary-500"
                 >
-                  <i className="ri-whatsapp-line text-base" aria-hidden="true" />
+                  <Icon name="ri-whatsapp-line" className="text-base" />
                   WhatsApp
                 </a>
               </li>
@@ -215,7 +216,7 @@ export default function Footer() {
                 aria-label="Close"
                 className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/10 text-foreground-700 transition-colors hover:bg-background-200 hover:text-foreground-950"
               >
-                <i className="ri-close-line text-lg" aria-hidden="true" />
+                <Icon name="ri-close-line" className="text-lg" />
               </button>
             </div>
             <div className="mt-5 space-y-3.5">

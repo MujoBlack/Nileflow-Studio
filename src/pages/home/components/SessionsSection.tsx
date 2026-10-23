@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import Reveal from "@/components/base/Reveal";
 import SectionHeading from "@/components/base/SectionHeading";
-import { imageByKey } from "@/design/assets";
+import { imageByKey, srcSetFor } from "@/design/assets";
 import { sessions } from "@/mocks/sessions";
+import Icon from "@/components/base/Icon";
 
 export default function SessionsSection() {
   return (
@@ -28,13 +29,17 @@ export default function SessionsSection() {
                     {image ? (
                       <img
                         src={image}
+                        srcSet={srcSetFor(image)}
+                        sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+                        loading="lazy"
+                        decoding="async"
                         alt={`${session.name} at Nile Flow House`}
                         className="h-full w-full object-cover object-center"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center bg-background-200">
                         <span className="flex h-14 w-14 items-center justify-center rounded-md bg-background-100">
-                          <i className={`${session.icon} text-2xl text-foreground-500`} aria-hidden="true" />
+                          <Icon name={session.icon} className="text-2xl text-foreground-500" />
                         </span>
                       </div>
                     )}
@@ -60,7 +65,7 @@ export default function SessionsSection() {
                       className="mt-4 inline-flex items-center justify-between gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-4 py-2.5 font-display text-[12px] uppercase tracking-[0.12em] text-background-50 transition-colors duration-200 hover:bg-primary-400"
                     >
                       Book
-                      <i className="ri-arrow-right-up-line text-sm" aria-hidden="true" />
+                      <Icon name="ri-arrow-right-up-line" className="text-sm" />
                     </Link>
                   </div>
                 </article>

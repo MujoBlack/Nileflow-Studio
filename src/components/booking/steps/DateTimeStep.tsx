@@ -11,6 +11,7 @@ import {
   toISODate,
 } from "@/lib/booking";
 import type { BookingDraft } from "@/lib/booking";
+import Icon from "@/components/base/Icon";
 
 interface StepProps {
   draft: BookingDraft;
@@ -93,7 +94,7 @@ export default function DateTimeStep({ draft, update, errors }: StepProps) {
               aria-label="Previous month"
               className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-foreground-700 transition-colors hover:bg-background-200 hover:text-foreground-950"
             >
-              <i className="ri-arrow-left-s-line text-lg" aria-hidden="true" />
+              <Icon name="ri-arrow-left-s-line" className="text-lg" />
             </button>
             <p className="font-display text-[13px] uppercase tracking-[0.14em] text-foreground-950">
               {MONTHS[view.getMonth()]} {view.getFullYear()}
@@ -104,7 +105,7 @@ export default function DateTimeStep({ draft, update, errors }: StepProps) {
               aria-label="Next month"
               className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-foreground-700 transition-colors hover:bg-background-200 hover:text-foreground-950"
             >
-              <i className="ri-arrow-right-s-line text-lg" aria-hidden="true" />
+              <Icon name="ri-arrow-right-s-line" className="text-lg" />
             </button>
           </div>
 
