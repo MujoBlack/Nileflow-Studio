@@ -39,7 +39,6 @@ export interface BookingExtra {
 }
 
 export const BOOKING_EXTRAS: BookingExtra[] = [
-  { id: "rough-mix", name: "Rough mix to take home", price: 30, unit: "per session" },
   { id: "tuning", name: "Same-day vocal tuning", price: 40, unit: "per song" },
   { id: "stems", name: "Extra stems export", price: 20, unit: "per session" },
   {
@@ -344,14 +343,14 @@ export function seedDemoBooking(): void {
     {
       ref: "NF-1234",
       key: "demo",
-      sessionId: "vocal",
-      sessionName: "Vocal session",
+      sessionId: "recording",
+      sessionName: "Recording session",
       date: toISODate(soon),
       startHour: 14,
       hours: 3,
-      extras: ["rough-mix"],
-      total: 240,
-      deposit: 72,
+      extras: ["tuning"],
+      total: 175,
+      deposit: 53,
       status: "confirmed",
       paymentMethod: "card",
       customer: {
@@ -367,14 +366,14 @@ export function seedDemoBooking(): void {
     {
       ref: "NF-1235",
       key: "demo",
-      sessionId: "production",
-      sessionName: "Production session",
+      sessionId: "dry-hire",
+      sessionName: "Dry hire",
       date: toISODate(later),
       startHour: 11,
       hours: 4,
       extras: ["stems"],
-      total: 380,
-      deposit: 114,
+      total: 180,
+      deposit: 54,
       status: "confirmed",
       paymentMethod: "twint",
       customer: {

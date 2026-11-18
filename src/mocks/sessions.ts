@@ -11,24 +11,14 @@ export interface SessionType {
 
 export const sessions: SessionType[] = [
   {
-    id: "vocal",
-    name: "Vocal session",
-    pricePerHour: 70,
-    blurb: "Record vocals or an overdub, with tuning and editing done as we go.",
-    detail: "Ideal for singers, rappers and top-liners who want to leave with a finished vocal take.",
+    id: "recording",
+    name: "Recording session",
+    pricePerHour: 45,
+    blurb: "Record your vocals with an engineer, and leave with a raw mix of the takes.",
+    detail: "For singers and rappers with a beat ready. Recording and a raw mix are included.",
     asset: "sessionVocal",
     icon: "ri-mic-line",
-    accentNote: "Engineer included",
-  },
-  {
-    id: "production",
-    name: "Production session",
-    pricePerHour: 90,
-    blurb: "Build a beat or arrangement with a producer at the desk.",
-    detail: "Bring an idea, a voice memo or a reference — we shape it into a full production.",
-    asset: "production",
-    icon: "ri-equalizer-line",
-    accentNote: "Producer included",
+    accentNote: "Raw mix included",
   },
   {
     id: "podcast",
