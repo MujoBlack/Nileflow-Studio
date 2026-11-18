@@ -15,7 +15,7 @@ Then open http://localhost:3000.
 
 ## Other commands
 
-- `npm run build`: production build into `out/`
+- `npm run build`: production build into `dist/`
 - `npm run preview`: serve the production build
 - `npm run type-check`: TypeScript check
 
