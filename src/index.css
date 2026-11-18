@@ -476,3 +476,15 @@
     animation: none;
   }
 }
+
+/* mobile menu: quick fade + rise */
+.mobile-menu {
+  animation: mobile-menu-in 220ms ease-out both;
+}
+@keyframes mobile-menu-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu { animation: none; }
+}
