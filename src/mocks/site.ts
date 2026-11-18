@@ -23,7 +23,7 @@ export const siteInfo = {
 /** One-page anchors, in the order the sections appear. */
 export const siteNav = [
   { label: "Sessions", hash: "sessions" },
-  { label: "Project work", hash: "project-work" },
+  { label: "Packages", hash: "packages" },
   { label: "Work", hash: "work" },
   { label: "Team", hash: "team" },
   { label: "FAQ", hash: "faq" },
@@ -40,7 +40,7 @@ export const openingHours = [
 export const footerPages = [
   { label: "Studio", hash: "studio" },
   { label: "Sessions", hash: "sessions" },
-  { label: "Project work", hash: "project-work" },
+  { label: "Packages", hash: "packages" },
   { label: "Work", hash: "work" },
   { label: "Team", hash: "team" },
   { label: "Reviews", hash: "reviews" },

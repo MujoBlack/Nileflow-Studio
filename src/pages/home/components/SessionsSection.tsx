@@ -19,7 +19,7 @@ export default function SessionsSection() {
           description="Pick what you're coming in for. We'll have the room set up before you arrive."
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {sessions.map((session, i) => {
             const image = session.asset ? imageByKey[session.asset] : null;
             return (

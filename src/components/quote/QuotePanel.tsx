@@ -120,7 +120,7 @@ export default function QuotePanel({ open, initialService, onClose }: QuotePanel
       <div className="sticky top-0 z-30 border-b border-white/[0.08] bg-background-50/95 backdrop-blur-xl">
         <div className="content-shell flex items-center justify-between gap-4 py-4">
           <div className="min-w-0">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-primary-500">Project work</p>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-primary-500">Packages &amp; custom work</p>
             <h2 className="headline mt-1 text-[clamp(1.1rem,2.4vw,1.5rem)] text-foreground-950">
               Ask about a project
             </h2>

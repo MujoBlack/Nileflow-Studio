@@ -1,43 +1,50 @@
 export interface ServiceItem {
   id: string;
   name: string;
-  from?: string;
+  price: number;
+  unit: string;
   blurb: string;
   icon: string;
   included: string[];
+  cta: string;
+  featured?: boolean;
 }
 
+/** Fixed-price packages, shown under "Packages" and offered in the quote form. */
 export const services: ServiceItem[] = [
   {
-    id: "mixing-mastering",
-    name: "Mixing & Mastering",
-    from: "From CHF 250",
-    blurb: "Balanced, release-ready mixes and masters for streaming.",
-    icon: "ri-equalizer-2-line",
-    included: ["2 rounds of changes", "Stems and streaming master", "Delivered in 5–7 days"],
-  },
-  {
-    id: "beats-composition",
-    name: "Beats & Composition",
-    from: "From CHF 300",
-    blurb: "Original instrumentals and toplines written for your project.",
+    id: "full-song",
+    name: "Full Song Bundle",
+    price: 400,
+    unit: "per song",
+    blurb: "One song from start to finish, all made here.",
     icon: "ri-music-2-line",
-    included: ["Custom beat, not a lease", "Full stems and MIDI", "One revision included"],
+    included: ["Beat production", "Recording", "Mix and master"],
+    cta: "Book this bundle",
+    featured: true,
   },
   {
-    id: "editing",
-    name: "Editing & Clean-up",
-    from: "From CHF 120",
-    blurb: "Vocal tuning, timing, drum editing and noise removal on tracks you recorded elsewhere.",
-    icon: "ri-scissors-cut-line",
-    included: ["Pitch and timing fixed", "Noise and clicks removed", "Delivered in 3–5 days"],
+    id: "recording-mix",
+    name: "Recording + Mix/Master",
+    price: 200,
+    unit: "per song",
+    blurb: "Bring your own beat and we record your vocals over it.",
+    icon: "ri-mic-line",
+    included: [
+      "Bring your own beat (stems give the best result)",
+      "Vocal recording",
+      "Mix and master included",
+    ],
+    cta: "Book this bundle",
   },
   {
-    id: "audio-film",
-    name: "Audio for Film & Video",
-    from: "From CHF 300",
-    blurb: "Clean, synced sound for ads, short films and social video.",
-    icon: "ri-film-line",
-    included: ["Dialogue clean-up", "Voiceover recording", "Sound synced to picture"],
+    id: "mix-master",
+    name: "Mix/Master Bundle",
+    price: 150,
+    unit: "per song",
+    blurb: "Recorded somewhere else? Send us the stems.",
+    icon: "ri-equalizer-2-line",
+    included: ["Send stems of vocals and beat", "Clean-up", "Mix and master"],
+    cta: "Send your files",
   },
 ];
