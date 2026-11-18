@@ -42,79 +42,106 @@ export default function Navbar() {
     window.setTimeout(() => scrollToSection(hash), 20);
   };
 
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? "border-b border-white/[0.08] bg-background-50/85 backdrop-blur-xl"
-          : "border-b border-transparent"
-      }`}
-    >
-      <div className="content-shell flex h-16 items-center justify-between md:h-[72px]">
-        <Link
-          to="/"
-          onClick={(event) => {
-            event.preventDefault();
-            setOpen(false);
-            if (location.pathname !== "/") navigate("/");
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          className="flex items-center gap-2.5"
-          aria-label={`${siteInfo.name} home`}
-        >
-          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-background-100">
-            <Icon name="ri-water-flash-line" className="text-base text-primary-500" />
-          </span>
-          <span className="font-heading text-[15px] font-semibold tracking-tight text-foreground-950">
-            {siteInfo.name}
-          </span>
-        </Link>
-
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {siteNav.map((item) => {
-            const isActive = active === item.hash;
-            return (
-              <a
-                key={item.hash}
-                href={`#${item.hash}`}
-                onClick={(event) => {
-                  event.preventDefault();
-                  go(item.hash);
-                }}
-                aria-current={isActive ? "true" : undefined}
-                className={`text-sm transition-colors duration-200 ${
-                  isActive ? "text-primary-500" : "text-foreground-700 hover:text-foreground-950"
-                }`}
-              >
-                {item.label}
-              </a>
-            );
-          })}
-        </nav>
-
-        <div className="hidden items-center lg:flex">
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-[61] transition-colors duration-300 ${
+          scrolled || open
+            ? "border-b border-white/[0.08] bg-background-50/85 backdrop-blur-xl"
+            : "border-b border-transparent"
+        }`}
+      >
+        <div className="content-shell flex h-16 items-center justify-between md:h-[72px]">
           <Link
-            to="/book"
-            className="inline-flex items-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-5 py-2.5 font-display text-[12px] uppercase tracking-[0.12em] text-background-50 transition-colors duration-200 hover:bg-primary-400"
+            to="/"
+            onClick={(event) => {
+              event.preventDefault();
+              setOpen(false);
+              if (location.pathname !== "/") navigate("/");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="flex items-center gap-2.5"
+            aria-label={`${siteInfo.name} home`}
           >
-            Book a session
-            <Icon name="ri-arrow-right-up-line" className="text-sm" />
+            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-background-100">
+              <Icon
+                name="ri-water-flash-line"
+                className="text-base text-primary-500"
+              />
+            </span>
+            <span className="font-heading text-[15px] font-semibold tracking-tight text-foreground-950">
+              {siteInfo.name}
+            </span>
           </Link>
+
+          <nav
+            className="hidden items-center gap-7 lg:flex"
+            aria-label="Primary"
+          >
+            {siteNav.map((item) => {
+              const isActive = active === item.hash;
+              return (
+                <a
+                  key={item.hash}
+                  href={`#${item.hash}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    go(item.hash);
+                  }}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`text-sm transition-colors duration-200 ${
+                    isActive
+                      ? "text-primary-500"
+                      : "text-foreground-700 hover:text-foreground-950"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
+
+          <div className="hidden items-center lg:flex">
+            <Link
+              to="/book"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-pill bg-primary-500 px-5 py-2.5 font-display text-[12px] uppercase tracking-[0.12em] text-background-50 transition-colors duration-200 hover:bg-primary-400"
+            >
+              Book a session
+              <Icon name="ri-arrow-right-up-line" className="text-sm" />
+            </Link>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-md text-foreground-950 lg:hidden"
+          >
+            <Icon
+              name={open ? "ri-close-line" : "ri-menu-line"}
+              className="text-xl"
+            />
+          </button>
         </div>
+      </header>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-md text-foreground-950 lg:hidden"
-        >
-          <Icon name={open ? "ri-close-line" : "ri-menu-line"} className="text-xl" />
-        </button>
-      </div>
-
+      {/* Kept outside <header>: its backdrop blur would trap a fixed child and collapse the menu. */}
       {open && (
-        <div className="fixed inset-x-0 bottom-0 top-16 z-[45] flex flex-col bg-background-50 md:top-[72px] lg:hidden">
+        <div
+          id="mobile-menu"
+          className="mobile-menu fixed inset-x-0 bottom-0 top-16 z-[60] flex flex-col bg-background-50 md:top-[72px] lg:hidden"
+        >
           <nav
             aria-label="Mobile"
             className="content-shell flex flex-1 flex-col justify-center gap-1 overflow-y-auto py-8"
@@ -160,6 +187,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

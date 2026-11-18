@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { OPEN_HOURS, formatHour, toISODate, weekdayOf } from "@/lib/booking";
+import { OPEN_HOURS, formatHour, isAdminHold, toISODate, weekdayOf } from "@/lib/booking";
 import type { StoredBooking } from "@/lib/booking";
 import Icon from "@/components/base/Icon";
 
@@ -136,7 +136,9 @@ export default function CalendarPanel({ bookings }: CalendarPanelProps) {
                               : "Click to block"
                         }
                         className={`flex min-h-[26px] cursor-pointer items-center justify-between gap-1 rounded-[5px] px-1.5 text-[10px] transition-colors ${
-                          booking
+                          booking && isAdminHold(booking)
+                            ? "cursor-default bg-amber-400/[0.16] text-amber-300"
+                            : booking
                             ? "cursor-default bg-primary-500/[0.18] text-primary-500"
                             : isBlocked
                               ? "bg-background-300 text-foreground-500 line-through"
@@ -161,7 +163,7 @@ export default function CalendarPanel({ bookings }: CalendarPanelProps) {
 
       <p className="mt-4 flex items-center gap-2 text-[11.5px] text-foreground-600">
         <Icon name="ri-information-line" className="text-sm text-primary-500" />
-        Click an empty slot to block it. Blocked slots are local to this preview.
+        Teal is a paid booking, amber is an admin hold (no payment). Click an empty slot to block it.
       </p>
     </div>
   );

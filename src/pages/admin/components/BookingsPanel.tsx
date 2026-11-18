@@ -2,7 +2,7 @@ import { useState } from "react";
 import { formatCHF, formatRange, updateBooking } from "@/lib/booking";
 import type { StoredBooking } from "@/lib/booking";
 
-const STATUSES = ["confirmed", "deposit paid", "completed", "cancelled"];
+const STATUSES = ["confirmed", "deposit paid", "admin hold", "completed", "cancelled"];
 
 interface BookingsPanelProps {
   bookings: StoredBooking[];
@@ -72,15 +72,17 @@ export default function BookingsPanel({ bookings, onChange }: BookingsPanelProps
                     {booking.sessionName}
                   </span>
                   <span className="text-[12px] text-foreground-900">
-                    {formatCHF(booking.total)}
+                    {booking.paymentMethod === "admin" ? "No payment" : formatCHF(booking.total)}
                   </span>
                   <span className="flex items-center gap-2">
                     <span
                       className={`h-1.5 w-1.5 shrink-0 rounded-full ${
                         booking.status === "cancelled"
-                          ? "bg-accent-500"
+                          ? "bg-rose-400"
                           : booking.status === "completed"
                             ? "bg-foreground-500"
+                            : booking.status === "admin hold"
+                            ? "bg-amber-300"
                             : "bg-primary-500"
                       }`}
                       aria-hidden="true"

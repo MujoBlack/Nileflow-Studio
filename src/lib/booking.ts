@@ -335,10 +335,14 @@ export function canChangeOnline(booking: StoredBooking): boolean {
 /** Example booking used by /admin in demo mode. */
 export function seedDemoBooking(): void {
   if (readAll().length > 0) return;
-  const soon = new Date();
-  soon.setDate(soon.getDate() + 4);
-  const later = new Date();
-  later.setDate(later.getDate() + 9);
+  const openDay = (offset: number) => {
+    const d = new Date();
+    d.setDate(d.getDate() + offset);
+    while (OPEN_HOURS[d.getDay()] === null) d.setDate(d.getDate() + 1);
+    return d;
+  };
+  const soon = openDay(1);
+  const later = openDay(2);
   const demo: StoredBooking[] = [
     {
       ref: "NF-1234",
@@ -377,8 +381,8 @@ export function seedDemoBooking(): void {
       status: "confirmed",
       paymentMethod: "twint",
       customer: {
-        name: "Marc Dorn",
-        email: "marc@example.com",
+        name: "Marco Rossi",
+        email: "marco@example.com",
         phone: "+41 78 222 33 44",
         project: "Beats for an EP",
         firstTime: "no",
@@ -386,6 +390,98 @@ export function seedDemoBooking(): void {
       },
       createdAt: new Date().toISOString(),
     },
+    {
+      ref: "AD-2001",
+      key: "demo",
+      sessionId: "recording",
+      sessionName: "Recording session",
+      date: toISODate(soon),
+      startHour: 18,
+      hours: 3,
+      extras: [],
+      total: 0,
+      deposit: 0,
+      status: "admin hold",
+      paymentMethod: "admin",
+      customer: {
+        name: "Tom Luska",
+        email: "tom@nileflowhouse.com",
+        phone: "",
+        project: "Own session",
+        firstTime: "",
+        notes: "Reserved by Tom Luska. Finishing the Jenva single.",
+      },
+      createdAt: new Date().toISOString(),
+    },
   ];
   writeAll(demo);
+}
+/* ------------------------------------------------------------------ *
+ * Admin reservations: studio time held by the team, no payment taken
+ * ------------------------------------------------------------------ */
+
+export const ADMIN_HOLD_PURPOSES = [
+  "Own session",
+  "Client session (paid outside the site)",
+  "Maintenance or setup",
+  "Blocked: private",
+];
+
+export interface AdminReservationInput {
+  adminName: string;
+  adminEmail: string;
+  purpose: string;
+  sessionId: string;
+  date: string;
+  startHour: number;
+  hours: number;
+  guest: string;
+  notes: string;
+}
+
+export function isAdminHold(booking: StoredBooking): boolean {
+  return booking.paymentMethod === "admin";
+}
+
+/** True if any hour of the block overlaps a booking that isn't cancelled. */
+export function overlapsBooking(date: string, startHour: number, hours: number): StoredBooking | undefined {
+  return readAll().find(
+    (b) =>
+      b.status !== "cancelled" &&
+      b.date === date &&
+      startHour < b.startHour + b.hours &&
+      b.startHour < startHour + hours,
+  );
+}
+
+export function createAdminReservation(input: AdminReservationInput): StoredBooking {
+  const existing = readAll();
+  const session = findSession(input.sessionId);
+  const booking: StoredBooking = {
+    ref: makeRef(existing).replace("NF-", "AD-"),
+    key: makeKey(),
+    sessionId: session.id,
+    sessionName: input.purpose === "Maintenance or setup" || input.purpose === "Blocked: private"
+      ? input.purpose
+      : session.name,
+    date: input.date,
+    startHour: input.startHour,
+    hours: input.hours,
+    extras: [],
+    total: 0,
+    deposit: 0,
+    status: "admin hold",
+    paymentMethod: "admin",
+    customer: {
+      name: input.guest.trim() || input.adminName,
+      email: input.adminEmail,
+      phone: "",
+      project: input.purpose,
+      firstTime: "",
+      notes: `Reserved by ${input.adminName}. ${input.notes}`.trim(),
+    },
+    createdAt: new Date().toISOString(),
+  };
+  writeAll([...existing, booking]);
+  return booking;
 }
