@@ -10,8 +10,6 @@ export interface AdminUser {
   lastActive: string;
 }
 
-export const ADMIN_PASSWORD = "nile-flow-admin";
-
 export const ADMINS: AdminUser[] = [
   { name: "Calvin", email: "calvin@nileflowhouse.com", role: "Owner", lastActive: "Now" },
   { name: "Tom Luska", email: "tom@nileflowhouse.com", role: "Engineer", lastActive: "2 hours ago" },

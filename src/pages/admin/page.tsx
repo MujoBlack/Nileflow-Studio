@@ -9,7 +9,7 @@ import PaymentsPanel from "@/pages/admin/components/PaymentsPanel";
 import CustomersPanel from "@/pages/admin/components/CustomersPanel";
 import AlertsPanel from "@/pages/admin/components/AlertsPanel";
 import TeamPanel from "@/pages/admin/components/TeamPanel";
-import { ADMINS, ADMIN_PASSWORD, ALERTS, findAdmin } from "@/pages/admin/adminData";
+import { ADMINS, ALERTS, findAdmin } from "@/pages/admin/adminData";
 import type { AdminUser } from "@/pages/admin/adminData";
 import { listBookings, seedDemoBooking } from "@/lib/booking";
 import type { StoredBooking } from "@/lib/booking";
@@ -95,7 +95,7 @@ export default function Admin() {
   const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const match = findAdmin(email);
-    if (match && password === ADMIN_PASSWORD) {
+    if (match && password.length > 0) {
       setAdmin(match);
       setLoginError("");
       return;
@@ -173,17 +173,14 @@ export default function Admin() {
               Preview access
             </p>
             <p className="mt-2 text-[12px] leading-relaxed text-foreground-700">
-              Password for every demo account: {ADMIN_PASSWORD}
+              Pick an account, or type its email with any password.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {ADMINS.map((a) => (
                 <button
                   key={a.email}
                   type="button"
-                  onClick={() => {
-                    setEmail(a.email);
-                    setPassword(ADMIN_PASSWORD);
-                  }}
+                  onClick={() => setAdmin(a)}
                   className="cursor-pointer rounded-pill border border-white/[0.12] px-3 py-1.5 text-[11.5px] text-foreground-700 transition-colors hover:border-primary-500/50 hover:text-primary-500"
                 >
                   {a.name} · {a.role}
