@@ -1,6 +1,13 @@
 import type { ComponentType, SVGProps } from "react";
 import {
   ArrowLeft,
+  Ban,
+  Bell,
+  CalendarPlus,
+  LogOut,
+  TriangleAlert,
+  UsersRound,
+  Wallet,
   ArrowRight,
   ArrowUpRight,
   AudioLines,
@@ -91,6 +98,13 @@ const ICONS: Record<string, SvgIcon> = {
   "ri-arrow-right-s-line": ChevronRight,
   "ri-arrow-right-up-line": ArrowUpRight,
   "ri-arrow-up-s-line": ChevronUp,
+  "ri-alarm-warning-line": TriangleAlert,
+  "ri-forbid-line": Ban,
+  "ri-notification-3-line": Bell,
+  "ri-calendar-event-line": CalendarPlus,
+  "ri-logout-box-line": LogOut,
+  "ri-team-line": UsersRound,
+  "ri-wallet-3-line": Wallet,
   "ri-bank-card-line": CreditCard,
   "ri-calendar-2-line": CalendarDays,
   "ri-calendar-check-line": CalendarCheck,
@@ -164,7 +178,7 @@ export default function Icon({ name, className = "" }: IconProps) {
       width="1em"
       height="1em"
       strokeWidth={1.8}
-      fill={filled ? "currentColor" : undefined}
+      fill={filled ? "currentColor" : "none"}
       className={`inline-block shrink-0 align-[-0.125em] ${className}`}
     />
   );
